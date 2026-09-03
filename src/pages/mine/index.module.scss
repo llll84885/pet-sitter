@@ -1,0 +1,137 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+}
+
+.profileHeader {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  padding: $spacing-xl $page-padding;
+  padding-top: calc(#{$spacing-xl} + env(safe-area-inset-top));
+
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    .avatar {
+      width: 120rpx;
+      height: 120rpx;
+      border-radius: $radius-round;
+      background: $color-text-white;
+      @include flex-center;
+      font-size: 64rpx;
+    }
+
+    .userInfo {
+      flex: 1;
+
+      .nicknameRow {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-xs;
+      }
+
+      .nickname {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        color: $color-text-white;
+      }
+
+      .roleBadge {
+        font-size: 20rpx;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.25);
+        padding: 4rpx 16rpx;
+        border-radius: $radius-sm;
+
+        &.provider {
+          background: $color-secondary;
+        }
+      }
+
+      .phone {
+        font-size: $font-size-sm;
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+}
+
+.statsRow {
+  display: flex;
+  background: $color-bg-card;
+  margin: -$spacing-lg $page-padding 0;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  position: relative;
+  z-index: 1;
+
+  .statItem {
+    flex: 1;
+    @include flex-center;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    .statValue {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-primary;
+    }
+
+    .statLabel {
+      font-size: $font-size-sm;
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+.menuSection {
+  margin: $spacing-lg $page-padding;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  gap: $spacing-md;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+
+  .menuIcon {
+    font-size: 40rpx;
+    width: 64rpx;
+    text-align: center;
+  }
+
+  .menuText {
+    flex: 1;
+    font-size: $font-size-md;
+    color: $color-text-primary;
+  }
+
+  .menuArrow {
+    font-size: $font-size-md;
+    color: $color-text-tertiary;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 2rpx solid $color-divider;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  padding: $spacing-md $page-padding $spacing-sm;
+}

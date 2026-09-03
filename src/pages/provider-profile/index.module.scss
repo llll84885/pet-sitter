@@ -1,0 +1,88 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-lg $page-padding;
+  display: flex;
+  flex-direction: column;
+}
+
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.field {
+  margin-bottom: $spacing-lg;
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.fieldInput {
+  width: 100%;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-md;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 200rpx;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-md;
+  box-sizing: border-box;
+}
+
+.tagRow {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.tagOption {
+  padding: $spacing-xs $spacing-lg;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+
+  &.active {
+    border-color: $color-primary;
+    color: $color-primary;
+    background: rgba($color-primary, 0.08);
+  }
+}
+
+.saveBtn {
+  margin-top: $spacing-xl;
+  background: $color-primary !important;
+  color: $color-text-white !important;
+  border-radius: $radius-button !important;
+  font-size: $font-size-md !important;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}

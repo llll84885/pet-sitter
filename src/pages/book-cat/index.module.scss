@@ -1,0 +1,363 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $page-padding;
+  padding-bottom: 240rpx;
+}
+
+.serviceHeader {
+  background: linear-gradient(135deg, $color-tag-cat 0%, $color-primary 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+
+  .headerTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-white;
+    margin-bottom: $spacing-xs;
+  }
+
+  .headerDesc {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+/* 基础服务内容 */
+.basicService {
+  .serviceItem {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+
+    .serviceIcon {
+      font-size: 32rpx;
+      flex-shrink: 0;
+    }
+  }
+}
+
+/* 宠物选择 */
+.petList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.petItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  border: 4rpx solid $color-border;
+  transition: all $transition-base;
+
+  &.selected {
+    border-color: $color-primary;
+    background: #FFF4E5;
+  }
+
+  .petAvatar {
+    font-size: 48rpx;
+    width: 80rpx;
+    height: 80rpx;
+    @include flex-center;
+    background: $color-bg-hover;
+    border-radius: $radius-round;
+    margin-right: $spacing-md;
+  }
+
+  .petInfo {
+    flex: 1;
+
+    .petName {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      margin-bottom: 4rpx;
+    }
+
+    .petBreed {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+
+  .petCheckbox {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: $radius-round;
+    border: 4rpx solid $color-border;
+    @include flex-center;
+    font-size: $font-size-sm;
+    transition: all $transition-base;
+
+    &.checked {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-text-white;
+    }
+  }
+}
+
+/* 日期时间 */
+.dateTimeSection {
+  .dateRow {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  .dateItem {
+    flex: 1;
+    padding: $spacing-md;
+    border-radius: $radius-md;
+    border: 4rpx solid $color-border;
+    @include flex-center;
+    flex-direction: column;
+    gap: 4rpx;
+    transition: all $transition-base;
+
+    &.selected {
+      border-color: $color-primary;
+      background: #FFF4E5;
+    }
+
+    .dateDay {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+    }
+
+    .dateNum {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  .timeRow {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+
+    .timeItem {
+      padding: $spacing-sm $spacing-md;
+      border-radius: $radius-sm;
+      border: 4rpx solid $color-border;
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      transition: all $transition-base;
+
+      &.selected {
+        border-color: $color-primary;
+        background: #FFF4E5;
+        color: $color-primary;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}
+
+.holidayTag {
+  display: inline-block;
+  font-size: $font-size-xs;
+  color: $color-holiday;
+  background: #FFECE8;
+  padding: 2rpx 12rpx;
+  border-radius: $radius-sm;
+  margin-left: $spacing-sm;
+}
+
+/* 升级服务 */
+.addonList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.addonItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  border: 4rpx solid $color-border;
+  transition: all $transition-base;
+
+  &.selected {
+    border-color: $color-primary;
+    background: #FFF4E5;
+  }
+
+  .addonInfo {
+    flex: 1;
+
+    .addonName {
+      font-size: $font-size-md;
+      color: $color-text-primary;
+      margin-bottom: 4rpx;
+    }
+
+    .addonDesc {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+
+  .addonPrice {
+    font-size: $font-size-md;
+    color: $color-price;
+    font-weight: $font-weight-semibold;
+    margin-right: $spacing-sm;
+  }
+
+  .addonCheckbox {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: $radius-round;
+    border: 4rpx solid $color-border;
+    @include flex-center;
+    transition: all $transition-base;
+
+    &.checked {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $color-text-white;
+    }
+  }
+}
+
+/* 地址 */
+.addressInput {
+  width: 100%;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  border: 4rpx solid $color-border;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  background: $color-bg-hover;
+  box-sizing: border-box;
+}
+
+.pickAddress {
+  text-align: right;
+  font-size: $font-size-sm;
+  color: $color-primary;
+  padding: $spacing-xs $spacing-sm 0 0;
+}
+
+.distanceInfo {
+  margin-top: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+/* 底部价格栏 */
+.priceBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg-card;
+  box-shadow: $shadow-float;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc(#{$spacing-md} + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+
+  .priceInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4rpx;
+
+    .priceLabel {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+
+    .priceValue {
+      font-size: $font-size-xxl;
+      font-weight: $font-weight-bold;
+      color: $color-price;
+    }
+  }
+
+  .submitBtn {
+    height: $button-height-lg;
+    padding: 0 64rpx;
+    border-radius: $radius-button;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    color: $color-text-white;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    @include button-reset;
+    transition: all $transition-base;
+
+    &:active {
+      opacity: 0.9;
+      transform: scale(0.98);
+    }
+  }
+}
+
+.priceDetails {
+  max-height: 400rpx;
+  overflow-y: auto;
+
+  .detailItem {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-sm 0;
+    font-size: $font-size-sm;
+
+    .detailLabel {
+      color: $color-text-secondary;
+    }
+
+    .detailAmount {
+      color: $color-text-primary;
+    }
+  }
+
+  .totalRow {
+    border-top: 2rpx solid $color-divider;
+    margin-top: $spacing-sm;
+    padding-top: $spacing-md;
+
+    .detailLabel {
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+
+    .detailAmount {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $color-price;
+    }
+  }
+}

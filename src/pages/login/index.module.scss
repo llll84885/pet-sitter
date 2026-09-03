@@ -1,0 +1,122 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: 0 $page-padding;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  font-size: 120rpx;
+  margin-top: calc(80rpx + env(safe-area-inset-top));
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  margin-top: $spacing-md;
+}
+
+.subtitle {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  margin-bottom: $spacing-xl;
+}
+
+.tabRow {
+  display: flex;
+  background: $color-bg-hover;
+  border-radius: $radius-lg;
+  padding: 6rpx;
+  width: 100%;
+  margin-bottom: $spacing-xl;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm 0;
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+
+  &.active {
+    background: $color-bg-card;
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+    box-shadow: $shadow-card;
+  }
+}
+
+.form {
+  width: 100%;
+}
+
+.inputGroup {
+  margin-bottom: $spacing-lg;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  background: $color-bg-card;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-md;
+  box-sizing: border-box;
+}
+
+.submitBtn {
+  width: 100% !important;
+  background: $color-primary !important;
+  color: $color-text-white !important;
+  border-radius: $radius-button !important;
+  font-size: $font-size-lg !important;
+  margin-top: $spacing-lg;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.hint {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xl;
+}
+
+.roleRow {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.roleOption {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm $spacing-lg;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+
+  &.active {
+    border-color: $color-primary;
+    color: $color-primary;
+    background: rgba($color-primary, 0.08);
+  }
+}

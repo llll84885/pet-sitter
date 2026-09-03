@@ -1,0 +1,219 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $page-padding;
+  padding-bottom: 200rpx;
+}
+
+.statusBanner {
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  &.pending {
+    background: linear-gradient(135deg, #FFF4E5 0%, #FFE4CC 100%);
+  }
+
+  &.accepted {
+    background: linear-gradient(135deg, #E6F4FF 0%, #CCE8FF 100%);
+  }
+
+  &.inProgress {
+    background: linear-gradient(135deg, #E8F8E8 0%, #CCF0CC 100%);
+  }
+
+  &.completed {
+    background: linear-gradient(135deg, #F5EDE3 0%, #E8DDD0 100%);
+  }
+
+  .statusIcon {
+    font-size: 64rpx;
+  }
+
+  .statusInfo {
+    .statusTitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-xs;
+    }
+
+    .statusDesc {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-sm;
+
+  .infoLabel {
+    color: $color-text-tertiary;
+    min-width: 140rpx;
+    flex-shrink: 0;
+  }
+
+  .infoValue {
+    flex: 1;
+    color: $color-text-primary;
+  }
+}
+
+.petList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.petCard {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+
+  .petAvatar {
+    font-size: 40rpx;
+    width: 64rpx;
+    height: 64rpx;
+    @include flex-center;
+    background: $color-bg-card;
+    border-radius: $radius-round;
+    margin-right: $spacing-md;
+  }
+
+  .petInfo {
+    .petName {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+    }
+
+    .petBreed {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-top: 4rpx;
+    }
+  }
+}
+
+.priceDetail {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .priceRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+
+    .rowLabel {
+      color: $color-text-secondary;
+    }
+
+    .rowAmount {
+      color: $color-text-primary;
+    }
+  }
+
+  .totalRow {
+    border-top: 2rpx solid $color-divider;
+    margin-top: $spacing-sm;
+    padding-top: $spacing-md;
+
+    .rowLabel {
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+
+    .rowAmount {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-price;
+    }
+  }
+}
+
+.addonTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+
+  .addonTag {
+    font-size: $font-size-xs;
+    color: $color-primary;
+    background: #FFF4E5;
+    padding: 4rpx 16rpx;
+    border-radius: $radius-round;
+  }
+}
+
+.earningRow {
+  .rowLabel {
+    font-weight: $font-weight-semibold;
+    color: $color-secondary;
+  }
+
+  .rowAmount {
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+  }
+}
+
+.actionBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-md $page-padding calc(#{$spacing-md} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: $spacing-md;
+
+  .barBtn {
+    flex: 1;
+    height: 88rpx;
+    border-radius: $radius-button;
+    @include flex-center;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    &.barBtnPrimary {
+      background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+      color: $color-text-white;
+    }
+
+    &.barBtnSuccess {
+      background: linear-gradient(135deg, $color-secondary 0%, lighten($color-secondary, 8%) 100%);
+      color: $color-text-white;
+    }
+
+    &.barBtnDanger {
+      background: #FFECE8;
+      color: $color-error;
+    }
+  }
+}

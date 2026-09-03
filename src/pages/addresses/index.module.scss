@@ -1,0 +1,211 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-lg $page-padding;
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  flex: 1;
+}
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+  border: 2rpx solid transparent;
+
+  &.cardDefault {
+    border-color: $color-primary;
+  }
+}
+
+.cardMain {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.contactName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.contactPhone {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.tag {
+  font-size: 20rpx;
+  color: $color-primary;
+  background: rgba($color-primary, 0.1);
+  padding: 4rpx 16rpx;
+  border-radius: $radius-sm;
+}
+
+.defaultBadge {
+  font-size: 20rpx;
+  color: $color-text-white;
+  background: $color-primary;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-sm;
+}
+
+.detail {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-lg;
+  justify-content: flex-end;
+  margin-top: $spacing-sm;
+  padding-top: $spacing-sm;
+  border-top: 2rpx solid $color-divider;
+}
+
+.actionBtn {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  padding: $spacing-xs $spacing-md;
+}
+
+.deleteBtn {
+  color: $color-error;
+}
+
+.addBtn {
+  margin-top: $spacing-lg;
+  background: $color-primary !important;
+  color: $color-text-white !important;
+  border-radius: $radius-button !important;
+  font-size: $font-size-md !important;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+.emptyIcon {
+  font-size: 96rpx;
+}
+
+.emptyText {
+  font-size: $font-size-lg;
+  color: $color-text-secondary;
+}
+
+.emptyHint {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// ---- Form ----
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.field {
+  margin-bottom: $spacing-lg;
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.fieldInput {
+  width: 100%;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-md;
+  box-sizing: border-box;
+}
+
+.tagRow {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.tagOption {
+  padding: $spacing-xs $spacing-lg;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+
+  &.tagActive {
+    border-color: $color-primary;
+    color: $color-primary;
+    background: rgba($color-primary, 0.08);
+  }
+}
+
+.defaultRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+}
+
+.btnRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+}
+
+.cancelBtn {
+  flex: 1;
+  background: $color-bg-hover !important;
+  color: $color-text-secondary !important;
+  border-radius: $radius-button !important;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.saveBtn {
+  flex: 1;
+  background: $color-primary !important;
+  color: $color-text-white !important;
+  border-radius: $radius-button !important;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}

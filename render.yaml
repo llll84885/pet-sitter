@@ -1,0 +1,16 @@
+# Render 一键部署配置
+# 文档: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: pet-sitter
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm run build:h5 && cd server && npm install --omit=dev
+    startCommand: node server/index.js
+    healthCheckPath: /api/pets
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: true
