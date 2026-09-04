@@ -341,7 +341,7 @@ function calculatePrice({ serviceType, distance, pets, addOns, date }) {
 // ============================================
 // API 路由
 // ============================================
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ ok: true, msg: '🐾 萌宠管家 API 服务运行中', time: new Date().toLocaleString('zh-CN') });
 });
 
@@ -738,7 +738,7 @@ initDB().then(() => {
     console.log('='.repeat(50));
     console.log('🐾 萌宠管家后端服务启动成功！');
     console.log(`📡 地址: http://localhost:${PORT}`);
-    console.log(`📄 健康检查: http://localhost:${PORT}/`);
+    console.log(`📄 健康检查: http://localhost:${PORT}/api/health`);
     console.log(`🐾 宠物 API:  GET  /api/pets`);
     console.log(`📋 订单 API:  GET  /api/orders`);
     console.log(`💰 定价 API:  POST /api/price/calc`);
