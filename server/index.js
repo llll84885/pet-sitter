@@ -12,7 +12,10 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DB_FILE = path.join(__dirname, 'data.sqlite');
+// 数据库目录可通过 DB_DIR 覆盖（K8s/容器部署时挂载持久卷用）
+const DB_DIR = process.env.DB_DIR || __dirname;
+if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true });
+const DB_FILE = path.join(DB_DIR, 'data.sqlite');
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
