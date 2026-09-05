@@ -188,6 +188,9 @@ async function initDB() {
   addColumnIfNotExists('order', 'commission', 'REAL NOT NULL DEFAULT 0');
   addColumnIfNotExists('order', 'provider_earning', 'REAL NOT NULL DEFAULT 0');
 
+  // 演示种子数据开关：生产环境设置 SEED_DATA=false 后，清空数据重启不再回弹
+  const SEED_DATA_ENABLED = process.env.SEED_DATA !== 'false';
+  if (SEED_DATA_ENABLED) {
   const petCount = db.exec('SELECT COUNT(*) as c FROM pet')[0]?.values[0][0] || 0;
   if (petCount === 0) {
     const stmt = db.prepare(
@@ -252,6 +255,9 @@ async function initDB() {
     seedAddrs.forEach(a => stmt.run([a.id, a.user_id, a.contact_name, a.phone, a.detail, a.tag, a.is_default]));
     stmt.free();
     console.log('[DB] 初始化 2 条种子地址');
+  }
+  } else {
+    console.log('[DB] SEED_DATA=false，跳过演示种子数据（干净环境）');
   }
 
   saveDB();
