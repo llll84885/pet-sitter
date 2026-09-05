@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build and Deploy
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,3 +38,39 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # 镜像推送完成后，自动触发 Sealos 滚动更新，无需手动重启
+      - name: Deploy to Sealos
+        env:
+          K8S_SERVER: ${{ secrets.K8S_SERVER }}
+          K8S_NS: ${{ secrets.K8S_NAMESPACE }}
+          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
+        run: |
+          set -e
+          echo "等待 GHCR 镜像同步..."
+          sleep 15
+          TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          echo "触发滚动更新: $TS"
+          CODE=$(curl -sk -o /tmp/patch.json -w "%{http_code}" -X PATCH \
+            "$K8S_SERVER/apis/apps/v1/namespaces/$K8S_NS/deployments/pet-sitter" \
+            -H "Authorization: Bearer $K8S_TOKEN" \
+            -H "Content-Type: application/strategic-merge-patch+json" \
+            -d "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-deploy/restartedAt\":\"$TS\"}}}}}")
+          echo "PATCH HTTP $CODE"
+          if [ "$CODE" != "200" ] && [ "$CODE" != "201" ]; then cat /tmp/patch.json; exit 1; fi
+
+          echo "等待新版本就绪..."
+          for i in $(seq 1 30); do
+            sleep 10
+            RESP=$(curl -sk "$K8S_SERVER/apis/apps/v1/namespaces/$K8S_NS/deployments/pet-sitter" \
+              -H "Authorization: Bearer $K8S_TOKEN")
+            READY=$(echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); s=d.get('status',{}); print(s.get('readyReplicas',0), s.get('updatedReplicas',0), d['spec']['replicas'])")
+            echo "[$i] ready/updated/target = $READY"
+            R=$(echo "$READY" | cut -d' ' -f1); U=$(echo "$READY" | cut -d' ' -f2); T=$(echo "$READY" | cut -d' ' -f3)
+            if [ "$R" = "$T" ] && [ "$U" = "$T" ]; then
+              echo "✅ 部署完成，线上已是最新版本"
+              exit 0
+            fi
+          done
+          echo "❌ 等待超时，请检查 Pod 状态"
+          exit 1
